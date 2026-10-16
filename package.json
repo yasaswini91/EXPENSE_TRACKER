@@ -1,0 +1,16 @@
+{
+  "name": "expense-tracker-mern",
+  "version": "1.0.0",
+  "description": "Full-stack MERN Expense Tracker application with MongoDB aggregation, Express REST API, React, and Recharts",
+  "private": true,
+  "scripts": {
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "seed": "npm --prefix backend run seed",
+    "test": "npm --prefix backend run test",
+    "build:frontend": "npm --prefix frontend run build"
+  },
+  "keywords": ["mern", "mongodb", "express", "react", "nodejs", "expense-tracker"],
+  "author": "",
+  "license": "ISC"
+}

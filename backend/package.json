@@ -1,0 +1,26 @@
+{
+  "name": "expense-tracker-backend",
+  "version": "1.0.0",
+  "description": "Express and MongoDB backend for Expense Tracker",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "vitest run",
+    "seed": "node src/scripts/seed.js"
+  },
+  "keywords": ["mern", "expense-tracker", "express", "mongoose"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "mongoose": "^8.7.0"
+  },
+  "devDependencies": {
+    "supertest": "^7.0.0",
+    "vitest": "^2.1.2"
+  }
+}
