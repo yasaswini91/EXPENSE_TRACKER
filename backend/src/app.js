@@ -8,20 +8,26 @@ import { notFoundHandler, errorHandler } from './middleware/errorHandler.js';
 
 const app = express();
 
+const clientUrls = (process.env.CLIENT_URL || '')
+  .split(',')
+  .map((u) => u.trim().replace(/\/$/, ''))
+  .filter(Boolean);
+
 const allowedOrigins = [
   'http://localhost:5173',
   'http://127.0.0.1:5173',
-  process.env.CLIENT_URL,
-].filter(Boolean);
+  ...clientUrls,
+];
 
 // CORS configuration supporting localhost, 127.0.0.1, and custom CLIENT_URL
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin) || process.env.NODE_ENV !== 'production') {
+      const normalizedOrigin = origin ? origin.replace(/\/$/, '') : '';
+      if (!origin || allowedOrigins.includes(normalizedOrigin) || process.env.NODE_ENV !== 'production') {
         return callback(null, true);
       }
-      return callback(new Error('Blocked by CORS policy'));
+      return callback(new Error(`Blocked by CORS policy: ${origin}`));
     },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
